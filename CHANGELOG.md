@@ -2,6 +2,11 @@
 
 All notable changes to Bolha UI. Versions follow [SemVer](https://semver.org/); releases are Git tags (`vX.Y.Z`).
 
+## 1.0.1 — 2026-11-09
+
+- The compose drawer scrolls again when the text box grows (for example when editing a post with
+  attachments): the drawer card no longer cuts off its own scrollbar.
+
 ## 1.0.0 — 2026-11-09
 
 First release, running on bolha.us and jornalismo.social.
