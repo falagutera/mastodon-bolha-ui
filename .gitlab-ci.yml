@@ -1,0 +1,29 @@
+# Checks the theme on every push: the SCSS compiles, dist/ matches the sources, install.sh
+# works on a fake Mastodon tree, plus the shared security stage (open/gcn/ci-templates).
+include:
+  - project: 'open/gcn/ci-templates'
+    file: '/security.yml'
+    ref: main
+stages: [security, test]
+
+sass:
+  stage: test
+  image: node:22-alpine
+  script:
+    # application.scss is Mastodon's own; a stub stands in for it.
+    - npx --yes sass@1.93.2 --no-source-map --load-path=ci/stub src/app/javascript/styles/bolha-ui.scss > /tmp/bolha-ui.css
+    - npx --yes sass@1.93.2 --no-source-map --load-path=ci/stub src/app/javascript/styles/bolha-ui-gcn.scss > /tmp/bolha-ui-gcn.css
+    - "grep -q 'font-family: \"Ubuntu\"' /tmp/bolha-ui.css"
+    - grep -q -- '--b-accent-d:#FF4D5E' /tmp/bolha-ui-gcn.css
+
+dist:
+  stage: test
+  image: alpine:3.22
+  script:
+    - scripts/build-dist.sh --check
+
+install:
+  stage: test
+  image: alpine:3.22
+  script:
+    - scripts/test-install.sh
