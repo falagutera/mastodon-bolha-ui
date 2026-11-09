@@ -2,6 +2,11 @@
 
 All notable changes to Bolha UI. Versions follow [SemVer](https://semver.org/); releases are Git tags (`vX.Y.Z`).
 
+## 1.0.2 — 2026-11-09
+
+- Markdown headings and quotes in posts: the line under headings and the bar beside quotes are a
+  stronger yellow (red in GCN), easier to see in light and dark.
+
 ## 1.0.1 — 2026-11-09
 
 - The compose drawer scrolls again when the text box grows (for example when editing a post with
