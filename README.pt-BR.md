@@ -40,8 +40,8 @@ Precisa de acesso ao código do Mastodon no servidor (instalação
 ```sh
 # como o usuário mastodon
 cd ~
-curl -fsSL https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/archive/v1.1.0/mastodon-bolha-ui-v1.1.0.tar.gz | tar -xz
-./mastodon-bolha-ui-v1.1.0/install.sh ~/live
+curl -fsSL "https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/jobs/artifacts/v1.2.0/raw/mastodon-bolha-ui.tar.gz?job=release" | tar -xz
+./mastodon-bolha-ui-1.2.0-*/install.sh ~/live
 
 cd ~/live
 RAILS_ENV=production bundle exec rails assets:precompile
@@ -66,8 +66,8 @@ partir do código do Mastodon com o tema dentro:
 ```sh
 git clone https://github.com/mastodon/mastodon.git && cd mastodon
 git checkout v4.7.5                      # a versão que você usa
-curl -fsSL https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/archive/v1.1.0/mastodon-bolha-ui-v1.1.0.tar.gz | tar -xz -C ..
-../mastodon-bolha-ui-v1.1.0/install.sh .
+curl -fsSL "https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/jobs/artifacts/v1.2.0/raw/mastodon-bolha-ui.tar.gz?job=release" | tar -xz -C ..
+../mastodon-bolha-ui-1.2.0-*/install.sh .
 docker build -t meu-registry/mastodon:v4.7.5-bolha-ui .
 ```
 
@@ -80,6 +80,14 @@ Cole o [`dist/bolha-ui.css`](dist/bolha-ui.css) (amarelo) ou o [`dist/bolha-ui-g
 todo mundo, por cima do tema de cada um. O mesmo arquivo serve como estilo pessoal com a extensão
 [Stylus](https://github.com/openstyles/stylus). Nesse modo não há fontes embutidas: a Ubuntu aparece
 onde estiver instalada, a fonte do sistema nos outros casos.
+
+## Versões
+
+As versões têm a forma `X.Y.Z-BUILD`: `X.Y.Z` vem do arquivo `VERSION` (SemVer) e `BUILD` é o número
+da pipeline do GitLab que gerou a release. Cada tag `vX.Y.Z` publica um pacote com essa versão
+embutida, que é o que os comandos acima baixam; uma cópia do `main` mostra `X.Y.Z-dev`. O tema
+mostra a versão em tudo que tiver a classe `bolha-ui-version` (no bolha.us, no rodapé da barra
+lateral). O que mudou em cada versão está no [CHANGELOG.md](CHANGELOG.md).
 
 ## Mais
 

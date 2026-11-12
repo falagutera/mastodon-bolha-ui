@@ -39,5 +39,8 @@ constructable stylesheet: `document.adoptedStyleSheets`), it works over the defa
 ## Releasing
 
 Bump `VERSION` (fix or small visual change = patch, new rule or variant = minor, renamed theme keys
-= major), add the `CHANGELOG.md` entry, update the version in the install commands of both READMEs,
-run `scripts/build-dist.sh`, commit, tag `vX.Y.Z` and push the tag.
+= major), add the `CHANGELOG.md` entry (CI fails without it), update the version in the install
+commands of both READMEs, run `scripts/build-dist.sh` (it also regenerates `_version.scss` as
+`X.Y.Z-dev`), commit, tag `vX.Y.Z` and push the tag. The tag's `release` job builds the tarball
+with `X.Y.Z-BUILD` (BUILD = its pipeline number) and keeps it as an artifact; never move a tag
+that already has a release.

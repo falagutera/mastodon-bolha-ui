@@ -48,8 +48,8 @@ You need shell access to the server's Mastodon source tree (a standard
 ```sh
 # as the mastodon user
 cd ~
-curl -fsSL https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/archive/v1.1.0/mastodon-bolha-ui-v1.1.0.tar.gz | tar -xz
-./mastodon-bolha-ui-v1.1.0/install.sh ~/live
+curl -fsSL "https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/jobs/artifacts/v1.2.0/raw/mastodon-bolha-ui.tar.gz?job=release" | tar -xz
+./mastodon-bolha-ui-1.2.0-*/install.sh ~/live
 
 cd ~/live
 RAILS_ENV=production bundle exec rails assets:precompile
@@ -81,8 +81,8 @@ Mastodon source with the theme added:
 ```sh
 git clone https://github.com/mastodon/mastodon.git && cd mastodon
 git checkout v4.7.5                      # the version you run
-curl -fsSL https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/archive/v1.1.0/mastodon-bolha-ui-v1.1.0.tar.gz | tar -xz -C ..
-../mastodon-bolha-ui-v1.1.0/install.sh .
+curl -fsSL "https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/jobs/artifacts/v1.2.0/raw/mastodon-bolha-ui.tar.gz?job=release" | tar -xz -C ..
+../mastodon-bolha-ui-1.2.0-*/install.sh .
 docker build -t my-registry/mastodon:v4.7.5-bolha-ui .
 ```
 
@@ -103,8 +103,16 @@ is installed, the system font elsewhere.
 
 ## Versions
 
-`VERSION` holds the theme version and [`CHANGELOG.md`](CHANGELOG.md) says what changed. Releases are
-Git tags (`v1.1.0`); download a tag, not `main`, for a server.
+Versions look like `X.Y.Z-BUILD`. `X.Y.Z` is in the `VERSION` file and follows SemVer, and `BUILD` is
+the GitLab pipeline number of the release. Each `vX.Y.Z` tag publishes a release tarball (the
+`release` job's artifact, kept forever) with that version built in; the install commands above use
+it. A copy from `main` or from a plain tag archive shows `X.Y.Z-dev`.
+
+The theme carries its version in `--bolha-ui-version`: anything with the class `bolha-ui-version`
+shows "Bolha UI X.Y.Z-BUILD" (bolha.us shows it in the sidebar footer), and `install.sh` prints it.
+
+What changed in each version is in [CHANGELOG.md](CHANGELOG.md). Add an entry when you bump
+`VERSION`: CI fails without it.
 
 ## Architecture
 

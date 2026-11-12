@@ -82,7 +82,7 @@ else
 			echo "$line" >> "$dest/config/themes.yml"
 		fi
 	done
-	echo "Bolha UI $(cat "$here/VERSION") installed in $dest."
+	echo "$(sed -n 's/.*"\(Bolha UI [^"]*\)".*/\1/p' "$here/src/app/javascript/styles/bolha-ui/_version.scss") installed in $dest."
 fi
 
 cat <<EOF

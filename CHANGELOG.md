@@ -2,6 +2,14 @@
 
 All notable changes to Bolha UI. Versions follow [SemVer](https://semver.org/); releases are Git tags (`vX.Y.Z`).
 
+## 1.2.0 — 2026-11-12
+
+- Versions follow the bolha standard: `X.Y.Z-BUILD`, where `BUILD` is the GitLab pipeline number
+  of the release. Each `vX.Y.Z` tag publishes a release tarball with that version built in; a copy
+  from git or a tag archive shows `X.Y.Z-dev`.
+- The theme carries its version: anything with the class `bolha-ui-version` shows
+  "Bolha UI X.Y.Z-BUILD" (the bolha.us fork shows it in the sidebar footer). `install.sh` prints it.
+
 ## 1.1.0 — 2026-11-12
 
 - Tinted surfaces: the accent (yellow, or red in GCN) is mixed into a few backgrounds so the

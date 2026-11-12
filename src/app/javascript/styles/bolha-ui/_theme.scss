@@ -132,3 +132,6 @@ body,.ui,.columns-area{background:var(--b-paper)}
 .compose-form__footer{background:var(--b-tint-soft);border-top:1px solid var(--b-tint-line);border-radius:0 0 4px 4px}
 .compose-form__actions .icon-button:not(.active):not(.disabled){color:var(--b-accent-strong)}
 .compose-form .dropdown-button{border-color:var(--b-tint-line);border-radius:999px;padding:4px 10px}
+
+/* ---------- version: anything with this class shows "Bolha UI X.Y.Z-BUILD" (--bolha-ui-version is in _version.scss) ---------- */
+.bolha-ui-version::after{content:var(--bolha-ui-version)}

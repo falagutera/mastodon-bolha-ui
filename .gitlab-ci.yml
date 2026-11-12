@@ -27,3 +27,27 @@ install:
   image: alpine:3.22
   script:
     - scripts/test-install.sh
+
+# On a vX.Y.Z tag: the release tarball, with the version X.Y.Z-BUILD (BUILD = this pipeline's
+# number) built into the theme and the plain-CSS files. It is a job artifact kept forever; the
+# README installs from it. The tag must match VERSION.
+release:
+  stage: test
+  image: alpine:3.22
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/
+  script:
+    - test "$CI_COMMIT_TAG" = "v$(cat VERSION)" || { echo "tag $CI_COMMIT_TAG does not match VERSION $(cat VERSION)"; exit 1; }
+    - scripts/build-dist.sh --check
+    - export BUILD=$CI_PIPELINE_ID
+    - scripts/build-dist.sh
+    - echo "$BUILD" > BUILD
+    - full="$(cat VERSION)-$BUILD"
+    - mkdir -p "/tmp/mastodon-bolha-ui-$full"
+    - cp -R install.sh VERSION BUILD CHANGELOG.md LICENSE README.md README.pt-BR.md dist src "/tmp/mastodon-bolha-ui-$full/"
+    - tar -C /tmp -czf mastodon-bolha-ui.tar.gz "mastodon-bolha-ui-$full"
+    - grep -q "Bolha UI $full" "/tmp/mastodon-bolha-ui-$full/src/app/javascript/styles/bolha-ui/_version.scss"
+  artifacts:
+    name: mastodon-bolha-ui-$CI_COMMIT_TAG
+    paths: [mastodon-bolha-ui.tar.gz]
+    expire_in: never

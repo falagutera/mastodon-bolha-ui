@@ -15,12 +15,12 @@ fail() { echo "FAIL: $*" >&2; exit 1; }
 ./install.sh --dry-run "$t" > /dev/null
 [ "$(cd "$t" && find . -type f | sort; cat config/themes.yml)" = "$orig" ] || fail "dry-run changed files"
 
-./install.sh "$t" > /dev/null
+./install.sh "$t" | grep -q "^Bolha UI $(cat VERSION)-" || fail "install.sh does not print the version"
 ./install.sh "$t" > /dev/null # twice: must not duplicate anything
 [ "$(grep -c '^bolha-ui:' "$t/config/themes.yml")" = 1 ] || fail "bolha-ui not added exactly once"
 [ "$(grep -c '^bolha-ui-gcn:' "$t/config/themes.yml")" = 1 ] || fail "bolha-ui-gcn not added exactly once"
 for f in app/javascript/styles/bolha-ui.scss app/javascript/styles/bolha-ui-gcn.scss \
-	app/javascript/styles/bolha-ui/_theme.scss app/javascript/fonts/bolha-ui/ubuntu-latin-400-normal.woff2 \
+	app/javascript/styles/bolha-ui/_theme.scss app/javascript/styles/bolha-ui/_version.scss app/javascript/fonts/bolha-ui/ubuntu-latin-400-normal.woff2 \
 	app/javascript/fonts/bolha-ui/LICENCE.txt config/locales/bolha-ui.yml; do
 	[ -f "$t/$f" ] || fail "missing $f"
 done
