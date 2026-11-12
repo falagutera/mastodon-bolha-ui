@@ -2,6 +2,14 @@
 
 All notable changes to Bolha UI. Versions follow [SemVer](https://semver.org/); releases are Git tags (`vX.Y.Z`).
 
+## 1.1.0 — 2026-11-12
+
+- Tinted surfaces: the accent (yellow, or red in GCN) is mixed into a few backgrounds so the
+  controls stand out. Stronger tint on the search box and the notification filter bar (the selected
+  filter is a plain card-coloured tab), softer tint on the compose footer and the
+  "Filtered notifications" banner, now a rounded card. The compose toolbar icons and the
+  visibility/language chips take the accent too. Light, dark and high contrast.
+
 ## 1.0.2 — 2026-11-09
 
 - Markdown headings and quotes in posts: the line under headings and the bar beside quotes are a

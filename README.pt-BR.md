@@ -40,8 +40,8 @@ Precisa de acesso ao código do Mastodon no servidor (instalação
 ```sh
 # como o usuário mastodon
 cd ~
-curl -fsSL https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/archive/v1.0.2/mastodon-bolha-ui-v1.0.2.tar.gz | tar -xz
-./mastodon-bolha-ui-v1.0.2/install.sh ~/live
+curl -fsSL https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/archive/v1.1.0/mastodon-bolha-ui-v1.1.0.tar.gz | tar -xz
+./mastodon-bolha-ui-v1.1.0/install.sh ~/live
 
 cd ~/live
 RAILS_ENV=production bundle exec rails assets:precompile
@@ -66,8 +66,8 @@ partir do código do Mastodon com o tema dentro:
 ```sh
 git clone https://github.com/mastodon/mastodon.git && cd mastodon
 git checkout v4.7.5                      # a versão que você usa
-curl -fsSL https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/archive/v1.0.2/mastodon-bolha-ui-v1.0.2.tar.gz | tar -xz -C ..
-../mastodon-bolha-ui-v1.0.2/install.sh .
+curl -fsSL https://gitlab.gutocarvalho.net/open/bolha/mastodon-bolha-ui/-/archive/v1.1.0/mastodon-bolha-ui-v1.1.0.tar.gz | tar -xz -C ..
+../mastodon-bolha-ui-v1.1.0/install.sh .
 docker build -t meu-registry/mastodon:v4.7.5-bolha-ui .
 ```
 

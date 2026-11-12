@@ -30,6 +30,8 @@
   --b-paper:#14161B; --b-surface:#1B1E25; --b-surface-2:#232730; --b-border:#2C313B; --b-border-strong:#3A404B;
   --b-accent:var(--b-accent-d); --b-accent-strong:var(--b-accent-strong-d); --b-accent-soft:var(--b-accent-soft-d); --b-on-accent:var(--b-on-accent-d);
   --b-shadow:0 1px 0 rgba(0,0,0,.2),0 10px 34px -20px rgba(0,0,0,.7);
+  /* tinted surfaces: the accent mixed into the card */
+  --b-tint:color-mix(in srgb,var(--b-accent-d) 18%,var(--b-surface)); --b-tint-soft:color-mix(in srgb,var(--b-accent-d) 7%,var(--b-surface)); --b-tint-line:color-mix(in srgb,var(--b-accent-d) 40%,var(--b-surface));
   --color-text-primary:#ECEEF1; --color-text-secondary:#99A0A9; --color-text-tertiary:#6E757F;
   --color-text-brand:var(--b-accent-d); --color-text-on-brand-base:var(--b-on-accent-d); --color-text-brand-on-inverted:var(--b-accent-strong-l);
   --color-text-error:#FF7A70; --color-text-warning:#FFB35C; --color-text-success:#5BD394;
@@ -49,6 +51,7 @@
   --b-paper:#FBFAF7; --b-surface:#FFFFFF; --b-surface-2:#F4F2EA; --b-border:#E7E4DB; --b-border-strong:#D8D4C8;
   --b-accent:var(--b-accent-l); --b-accent-strong:var(--b-accent-strong-l); --b-accent-soft:var(--b-accent-soft-l); --b-on-accent:var(--b-on-accent-l);
   --b-shadow:0 1px 0 rgba(20,22,27,.03),0 8px 30px -18px rgba(20,22,27,.28);
+  --b-tint:color-mix(in srgb,var(--b-accent-l) 14%,var(--b-surface)); --b-tint-soft:color-mix(in srgb,var(--b-accent-l) 6%,var(--b-surface)); --b-tint-line:color-mix(in srgb,var(--b-accent-l) 45%,var(--b-surface));
   --color-text-primary:#20242B; --color-text-secondary:#6A6F77; --color-text-tertiary:#93979E;
   --color-text-brand:var(--b-accent-strong-l); --color-text-on-brand-base:var(--b-on-accent-l);
   --color-text-error:#C2382F; --color-text-warning:#B76B00; --color-text-success:#1F8A4C;
@@ -110,3 +113,22 @@ body,.ui,.columns-area{background:var(--b-paper)}
 .drawer__inner__mastodon{background:radial-gradient(120% 70% at 50% 100%,var(--b-accent-soft),transparent 70%)}
 .drawer__inner__mastodon.with-zig-zag-decoration::after,.drawer__inner__mastodon.with-zig-zag-decoration::before{display:none}
 .drawer__inner__mastodon > img{width:88%;max-width:88%;margin:0 auto;object-position:bottom center}
+
+/* ---------- tinted surfaces: strong tint on the search and the notification filters,
+   soft tint on the compose footer and the filtered-notifications banner ---------- */
+.search__input{background:var(--b-tint);border-color:var(--b-tint-line);color:var(--color-text-primary)}
+.search__input::placeholder{color:var(--b-accent-strong);opacity:1}
+.search__icon .icon{color:var(--b-accent-strong)}
+
+.notification__filter-bar{background:var(--b-tint);border-color:var(--b-tint-line);padding:6px 8px;gap:4px}
+.notification__filter-bar button{color:var(--b-accent-strong);padding:9px 0;border-radius:10px}
+.notification__filter-bar button:hover{color:var(--color-text-primary)}
+.notification__filter-bar button.active{background:var(--b-surface);color:var(--color-text-primary)}
+.notification__filter-bar button.active::before{display:none}
+
+.filtered-notifications-banner{background:var(--b-tint-soft);border-bottom:0;border-radius:12px;margin:12px}
+.filtered-notifications-banner .notification-group__icon{color:var(--b-accent-strong)}
+
+.compose-form__footer{background:var(--b-tint-soft);border-top:1px solid var(--b-tint-line);border-radius:0 0 4px 4px}
+.compose-form__actions .icon-button:not(.active):not(.disabled){color:var(--b-accent-strong)}
+.compose-form .dropdown-button{border-color:var(--b-tint-line);border-radius:999px;padding:4px 10px}
