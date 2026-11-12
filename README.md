@@ -20,6 +20,11 @@ phones, in **light, dark and high contrast**, following each person's own appear
 |---|---|
 | ![Single column, light](screenshots/simple-light.png) | ![Single column, dark](screenshots/simple-dark.png) |
 
+Since 1.1.0 the accent tints the search box, the notification filters, the compose footer and the
+filtered-notifications banner, in both variants, light and dark:
+
+![Tinted surfaces: Bolha UI and Bolha UI GCN, dark and light](screenshots/tinted-surfaces.png)
+
 <sub>The screenshots are design mockups with made-up people and posts; the theme itself runs on
 bolha.us and jornalismo.social.</sub>
 

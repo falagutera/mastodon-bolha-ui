@@ -16,6 +16,11 @@ escuro e alto contraste**, seguindo as preferências de aparência de cada pesso
 |---|---|
 | ![Bolha UI, claro](screenshots/advanced-light.png) | ![Bolha UI GCN, escuro](screenshots/advanced-gcn.png) |
 
+Desde a 1.1.0 o acento tinge a busca, os filtros de notificação, o rodapé do compor e o aviso de
+notificações filtradas, nas duas variantes, claro e escuro:
+
+![Fundos tingidos: Bolha UI e Bolha UI GCN, escuro e claro](screenshots/tinted-surfaces.png)
+
 <sub>Os prints são mockups com pessoas e posts inventados; o tema em si roda no bolha.us e no
 jornalismo.social.</sub>
 
