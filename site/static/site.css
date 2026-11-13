@@ -47,3 +47,8 @@
   .badge.on{border-color:var(--accent); color:var(--accent-strong)}
 
   @media (max-width:640px){ .shots,.what{grid-template-columns:1fr} }
+  footer{margin:52px 0 40px; padding-top:22px; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; justify-content:center; text-align:center; color:var(--text-dim); font-size:.85rem}
+  footer a{color:var(--accent-strong); text-decoration:none; font-family:var(--mono); font-size:.82rem}
+  footer a:hover{text-decoration:underline}
+  footer .sep{color:var(--text-faint)}
+  @media (prefers-reduced-motion:reduce){*{transition:none !important}}
