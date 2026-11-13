@@ -1,0 +1,79 @@
+:root {
+    --paper:#FBFAF7; --surface:#FFFFFF; --surface-2:#F4F2EA;
+    --border:#E7E4DB; --border-strong:#D8D4C8;
+    --text:#20242B; --text-dim:#6A6F77; --text-faint:#93979E;
+    --accent:#F5B301; --accent-strong:#8A6300; --accent-soft:#FCEFC2;
+    --logo-ink:#2A2E35;
+    --shadow:0 1px 0 rgba(20,22,27,.03), 0 8px 30px -18px rgba(20,22,27,.28);
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Menlo",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+    --paper:#14161B; --surface:#1B1E25; --surface-2:#232730;
+    --border:#2C313B; --border-strong:#3A404B;
+    --text:#ECEEF1; --text-dim:#99A0A9; --text-faint:#6E757F;
+    --accent:#FFC72C; --accent-strong:#FFC72C; --accent-soft:#3a3416;
+    --logo-ink:#E6E8EC;
+    --shadow:0 1px 0 rgba(0,0,0,.2), 0 10px 34px -20px rgba(0,0,0,.7);
+  }}
+  :root[data-theme="dark"]{
+    --paper:#14161B; --surface:#1B1E25; --surface-2:#232730;
+    --border:#2C313B; --border-strong:#3A404B;
+    --text:#ECEEF1; --text-dim:#99A0A9; --text-faint:#6E757F;
+    --accent:#FFC72C; --accent-strong:#FFC72C; --accent-soft:#3a3416;
+    --logo-ink:#E6E8EC;
+    --shadow:0 1px 0 rgba(0,0,0,.2), 0 10px 34px -20px rgba(0,0,0,.7);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--text);
+    font-family:var(--sans); font-size:16px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:840px; margin:0 auto; padding:0 24px}
+
+  /* top bar */
+  .bar{display:flex; align-items:center; justify-content:space-between; padding:22px 0 0}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.02em; font-size:1.05rem}
+  .bubble{width:15px;height:15px;border-radius:50%;background:var(--accent);flex:0 0 auto;box-shadow:0 0 0 4px var(--accent-soft)}
+  .toggle{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--text-dim); background:transparent; border:1px solid var(--border);
+    border-radius:999px; padding:7px 13px; cursor:pointer;
+  }
+  .toggle:hover{border-color:var(--border-strong); color:var(--text)}
+  .toggle:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+  /* hero */
+  header.hero{padding:56px 0 40px}
+  .kicker{font-family:var(--mono); font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-strong); margin:0 0 16px; display:flex; align-items:center; gap:9px}
+  .kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{font-size:clamp(2.3rem,7vw,3.5rem); line-height:1.02; letter-spacing:-.035em; font-weight:800; margin:0; text-wrap:balance}
+  h1 em{font-style:normal; color:var(--accent-strong); position:relative; white-space:nowrap}
+  .lede{margin:20px 0 0; max-width:52ch; font-size:1.075rem; color:var(--text-dim); text-wrap:pretty}
+
+  /* directory */
+  main{padding:8px 0 12px}
+  .cat{margin:38px 0 10px; display:flex; align-items:baseline; gap:12px}
+  .cat h2{font-family:var(--mono); font-size:.76rem; letter-spacing:.13em; text-transform:uppercase; color:var(--text-dim); font-weight:600; margin:0}
+  .cat .rule{flex:1; height:1px; background:var(--border)}
+  .cat .count{font-family:var(--mono); font-size:.72rem; color:var(--text-faint)}
+
+  .group{border:1px solid var(--border); border-radius:16px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow)}
+  .row{
+    display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:16px;
+    padding:15px 18px; text-decoration:none; color:inherit; position:relative;
+    border-top:1px solid var(--border);
+  }
+  .group .row:first-child{border-top:0}
+  .row::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent); transform:scaleY(0); transform-origin:center; transition:transform .16s ease}
+  .row:hover{background:var(--surface-2)}
+  .row:hover::before{transform:scaleY(1)}
+  .row:focus-visible{outline:2px solid var(--accent); outline-offset:-2px; border-radius:6px}
+
+  .chip{width:42px;height:42px;border-radius:50%; background:var(--surface-2); border:1px solid var(--border);
+    display:grid; place-items:center; flex:0 0 auto; transition:background .16s ease, border-color .16s ease}
+  .row:hover .chip{background:var(--accent); border-color:var(--accent)}
+  .chip .ico{width:22px;height:22px; color:var(--logo-ink); transition:color .16s ease}

@@ -44,3 +44,10 @@ commands of both READMEs, run `scripts/build-dist.sh` (it also regenerates `_ver
 `X.Y.Z-dev`), commit, tag `vX.Y.Z` and push the tag. The tag's `release` job builds the tarball
 with `X.Y.Z-BUILD` (BUILD = its pipeline number) and keeps it as an artifact; never move a tag
 that already has a release.
+
+## Website
+
+`site/build.py` (Python stdlib) builds [ui.bolha.us](https://ui.bolha.us): pt-BR at `/`, English at
+`/en/`. It reads `VERSION`, `CHANGELOG.md` and `screenshots/`, so a release updates it by itself; the
+`pages` job publishes it on every push to `main`. Preview: `python3 site/build.py /tmp/ui && python3 -m
+http.server -d /tmp/ui`. Keep both languages in step when you change the text.

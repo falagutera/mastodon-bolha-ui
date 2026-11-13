@@ -8,7 +8,7 @@ red **GCN** variant).
 It works in the **advanced web interface** (many columns), in the **single column** layout and on
 phones, in **light, dark and high contrast**, following each person's own appearance settings.
 
-[Português](README.pt-BR.md)
+[Português](README.pt-BR.md) · Website: [ui.bolha.us](https://ui.bolha.us/en/)
 
 ![Bolha UI, dark, advanced web interface](screenshots/advanced-dark.png)
 
@@ -149,6 +149,7 @@ How it works, step by step:
 | `src/config/locales/bolha-ui.yml` | theme names in the theme picker |
 | `dist/` | plain-CSS builds for custom CSS / Stylus (`scripts/build-dist.sh`) |
 | `install.sh` | installs or removes the theme in a Mastodon tree |
+| `site/` | [ui.bolha.us](https://ui.bolha.us), the theme's page (`python3 site/build.py`, GitLab Pages) |
 
 ## Testing and security
 
