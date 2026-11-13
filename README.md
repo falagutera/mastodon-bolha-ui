@@ -28,6 +28,15 @@ filtered-notifications banner, in both variants, light and dark:
 <sub>The screenshots are design mockups with made-up people and posts; the theme itself runs on
 bolha.us and jornalismo.social.</sub>
 
+## Contents
+
+- [What you get](#what-you-get)
+- [Install](#install)
+- [Versions](#versions)
+- [Architecture](#architecture)
+- [Testing and security](#testing-and-security)
+- [Credits and licence](#credits-and-licence)
+
 ## What you get
 
 - **Two themes**: `Bolha UI` (yellow) and `Bolha UI GCN` (red), side by side with Mastodon's own.
